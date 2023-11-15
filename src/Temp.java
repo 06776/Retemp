@@ -2,6 +2,7 @@
  * Hajdara Patrik, 2023-11-14
  * Copyright (c) 2023, Hajdara Patrik
  * Licenc: MIT
+ * Az esetlegesen elofordulo hibakert nem all modomban felelosseget vallalni
  */
 
 import java.util.ArrayList;
