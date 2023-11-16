@@ -1,6 +1,7 @@
 /*
- * Hajdara Patrik, 2023-11-14
+ * Refactored by Hajdara Patrik, 2023-11-16
  * Copyright (c) 2023, Hajdara Patrik
+ * File name: Temp.java
  * Licenc: MIT
  * Az esetlegesen elofordulo hibakert nem all modomban felelosseget vallalni
  */
@@ -11,55 +12,55 @@ import java.util.Scanner;
 
 public class Temp {
 
-  ArrayList<Double> tempDetails;
+  ArrayList<Double> temperatureList;
 
   public Temp() {
-    Double[] changes = { 2.5, 2.8, 1.2, 0.5, -1.1 };
-    this.tempDetails = new ArrayList<>(Arrays.asList(changes));
+    Double[] baseData = { 2.5, 2.8, 1.2, 0.5, -1.1 };
+    this.temperatureList = new ArrayList<>(Arrays.asList(baseData));
   }
 
-  public void celsius() {
-    String time = "";
-    while (!time.equals("done")) {
-      time = information();
-      lep(time);
+  public void collectTemperature() {
+    String inputData = "";
+    while (!inputData.equals("done")) {
+      inputData = inputTemp();
+      checkEnd(inputData);
     }
   }
 
-  public String information() {
+  public String inputTemp() {
     Scanner scan = new Scanner(System.in);
     System.out.print("Temperature: ");
     return scan.nextLine();
   }
 
-  public void lep(String tempStr) {
+  public void checkEnd(String tempStr) {
     if (!tempStr.equals("done")) {
-      output(tempStr);
+      convertAndAdd(tempStr);
     } else {
-      wl();
+      writeList();
     }
   }
 
-  public void output(String tempStr) {
-    if (cik(tempStr)) {
-      double temp = Double.parseDouble(tempStr);
-      tempDetails.add(temp);
+  public void convertAndAdd(String tempStr) {
+    if (checkInput(tempStr)) {
+      double temperature = Double.parseDouble(tempStr);
+      temperatureList.add(temperature);
     } else {
       System.err.println("Wrong input! Please enter a number");
     }
   }
 
-  public boolean cik(String a) {
-    if (a.matches("[0-9.]+")) {
+  public boolean checkInput(String input) {
+    if (input.matches("[0-9.]+")) {
       return true;
     } else {
       return false;
     }
   }
 
-  public void wl() {
-    for (double changes : this.tempDetails) {
-      System.out.print(changes + " ");
+  public void writeList() {
+    for (double temperature : this.temperatureList) {
+      System.out.print(temperature + " ");
     }
     System.out.println();
   }

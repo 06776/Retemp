@@ -1,4 +1,4 @@
-# Retemp
+# Temperature (javított)
 
 Jelen Hőmérsékleti adatokat bekérő program a "Tiszta kód" elvén íródott
 
